@@ -2,8 +2,15 @@ package main.java.lesson3;
 
 public class M_Loops {
     public static void main(String[] args) {
-        int[] arr = {2, 4, 6, 8, 10};
+        int[] arr = {2, 4, 6, 8, 10, 12, 14, 126};
 //        for(int i = 0; i <= arr.length - 1; i++){
+//            System.out.println(arr[i]);
+//        }
+//        for(int i = 3; i <= arr.length - 1; i +=4){
+//            System.out.println(arr[i]);
+//        }
+//
+//        for(int i = arr.length - 1; i == 0; i--){
 //            System.out.println(arr[i]);
 //        }
 
@@ -14,8 +21,18 @@ public class M_Loops {
 //            System.out.println();
 //        }
 
-        for(int el: arr) {
+        /*for(int el: arr) {
             System.out.println(el);
-        }
+        }*/
+        /*int i = 9;
+        while (i >= 0) {
+            i--;
+            System.out.println("Hello");
+        }*/
+        int i = 9;
+        do{
+            i--;
+            System.out.println("Hello");
+        } while (i >= 0);
     }
 }

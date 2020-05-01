@@ -2,7 +2,7 @@ package main.java.lesson3;
 
 public class L_Arrays {
     public static void main(String[] args) {
-        int[] a = {10, 20, 30};
+        int[] a = {10, 20, 30, 5};
         int b[] = {10, 20, 30};
         int c[] = new int[5];
         char[] ch = {'c', 's'};

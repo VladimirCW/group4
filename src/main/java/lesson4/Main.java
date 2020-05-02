@@ -21,7 +21,8 @@ public class Main {
         System.out.println("Second cat " + cat2.name);
         cat2.greet("Vova");
         cat3.greet("Vova");
-
+        cat1.setAge(-10);
+        System.out.println(cat1.getAge());
         //System.out.println(Cat.counter);
     }
 }

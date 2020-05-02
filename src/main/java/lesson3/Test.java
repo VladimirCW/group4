@@ -4,6 +4,6 @@ import main.java.lesson4.Cat;
 public class Test {
     public static void main(String[] args) {
         Cat cat = new Cat();
-        cat.greet("sdad");
+        //cat.greet("sdad");
     }
 }

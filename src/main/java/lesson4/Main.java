@@ -23,6 +23,6 @@ public class Main {
         cat3.greet("Vova");
         cat1.setAge(-10);
         System.out.println(cat1.getAge());
-        //System.out.println(Cat.counter);
+        Cat.printCount();
     }
 }

@@ -1,0 +1,4 @@
+mvn clean -Dtest=FirstTest test
+mvn clean -Dtest=FirstTest#successLogin test
+mvn clean -Dtest=FirstTest#successLogin+successLogin3 test
+mvn clean -Dtest=FirstTest#success* test

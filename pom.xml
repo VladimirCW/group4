@@ -8,6 +8,10 @@
     <artifactId>group4</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <suiteXmlFile>smoke-testng.xml</suiteXmlFile>
+    </properties>
+
     <build>
         <sourceDirectory>src</sourceDirectory>
         <plugins>
@@ -21,6 +25,17 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M4</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

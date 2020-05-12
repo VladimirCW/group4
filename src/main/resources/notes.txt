@@ -2,3 +2,6 @@ mvn clean -Dtest=FirstTest test
 mvn clean -Dtest=FirstTest#successLogin test
 mvn clean -Dtest=FirstTest#successLogin+successLogin3 test
 mvn clean -Dtest=FirstTest#success* test
+
+#new_head > div.b-new-index-icons.container > div > div:nth-child(2) > a > h3 > span
+[class='item_napr'] h3 span

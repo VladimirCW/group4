@@ -3,6 +3,7 @@ package main.java.lesson5.inheritance;
 public abstract class Animal {
     private String name;
     private int age;
+    //private int health;
 
     public Animal(String name) {
         this.age = 50;
@@ -30,5 +31,9 @@ public abstract class Animal {
     }
 
     public abstract String greet();
+
+    public void attack(IAtackable animal) {
+        //animal.health -= 10;
+    }
 
 }

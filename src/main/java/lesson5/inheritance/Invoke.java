@@ -15,5 +15,15 @@ public class Invoke {
         //4 == 4;
         System.out.println(vasiliy.equals(victor));
         //System.out.println(vasiliy.toString());
+        Animal cat = new Cat("AA");
+        Cat cat2 = (Cat) cat;
+        Animal[] cats = {new Cat("A"), new Cat("B"), new Dog("C")};
+        IAtackable[] atackable = {new Dog("B"), new Mouse("C")};
+        IAtackable animal = new Dog("DD");
+        Mouse mouse = new Mouse("sd");
+        bobik.attack(mouse);
+        //int a = 2;
+        //long b = a
+        //int c = (int)b
     }
 }

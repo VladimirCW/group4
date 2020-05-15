@@ -6,9 +6,9 @@ import org.testng.annotations.Test;
 
 public class SecondTest {
 
-    @Parameters({"browser"})
+    @Parameters({"browser", "version"})
     @Test
-    public static void successLogin(@Optional("firefox") String browser) {
-        System.out.println("Second Hello " + browser);
+    public static void successLogin(@Optional("firefox") String browser, @Optional("v50") String version) {
+        System.out.println("Second Hello " + browser + " " + version);
     }
 }

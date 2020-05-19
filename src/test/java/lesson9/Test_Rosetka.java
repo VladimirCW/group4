@@ -1,4 +1,4 @@
-package test.java.lesson8;
+package test.java.lesson9;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -12,12 +12,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+import java.util.List;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
-public class A_Wait_Intro {
+public class Test_Rosetka {
     WebDriver driver;
     WebDriverWait wait;
     String searchStr = "iPhone";
@@ -30,22 +29,22 @@ public class A_Wait_Intro {
     By popup = By.cssSelector(popupStrSelect);
     By popupClose = By.cssSelector(popupStrSelect + " [class='popup-close']");
     By suggestion = By.cssSelector("[data-rz-gtm-event='suggestedQuery']");
+    By contactBtn = By.cssSelector("[href='https://rozetka.com.ua/contacts/']");
+    By qAndABn = By.cssSelector("[href='https://rozetka.com.ua/faq/']");
+    By qaLinks = By.cssSelector("[name='slider-block-active']");
 
     @BeforeMethod
-    public void beforeMethod() {
+    public void beforeMethod(){
         System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
         options.addArguments("--window-size=1300,1080");
-        //options.addArguments("--incognito");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        //driver.manage().window().maximize();
     }
 
     @Test
-    public void testFirst() {
+    public void testA() {
         driver.get("https://rozetka.com.ua/");
         WebElement searchEl = driver.findElement(search);
         wait.until(ExpectedConditions.elementToBeClickable(searchEl));
@@ -54,30 +53,34 @@ public class A_Wait_Intro {
         }
         searchEl.sendKeys(searchStr);
         searchEl.sendKeys(Keys.ENTER);
-        wait.until(ExpectedConditions.visibilityOf(driver.findElement(iPhone)));
-        driver.get("https://rozetka.com.ua/notebooks/c80004/filter/preset=workteaching/");
-        WebElement searchEl2 = driver.findElement(search);
-        wait.until(ExpectedConditions.elementToBeClickable(searchEl2));
-        if( driver.findElements(popup).size() > 0 ) {
-            driver.findElement(popupClose).click();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
-        /*searchEl2.click();
-        ///wait.until(ExpectedConditions.elementToBeClickable(suggestion));
-        wait.until(ExpectedConditions.elementToBeClickable(suggestion)).click();
-        //driver.findElement(suggestion).click();
-        wait.until(ExpectedConditions.and(
-                ExpectedConditions.visibilityOfElementLocated(iPhone),
-                ExpectedConditions.urlContains(searchStr.toLowerCase())
-        ));
-        String actual = driver.getCurrentUrl();
-        String expected = "/#search_text=" + searchStr.toLowerCase();
-        assertTrue(actual.contains(expected),
-                String.format("Expected '%s' to contain '%s'", actual, expected));*/
+        wait.until(ExpectedConditions.visibilityOf(driver.findElement(iPhone)));
+        wait.until(ExpectedConditions.elementToBeClickable(contactBtn));
+        driver.findElement(contactBtn).click();
+        wait.until(ExpectedConditions.elementToBeClickable(qAndABn));
+        driver.findElement(qAndABn).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(qaLinks));
+        List<WebElement> webLinks = driver.findElements(qaLinks);
+        for (WebElement element: webLinks) {
+            String expectedColor = "rgba(62, 119, 170, 1)";
+            String actualColor = element.getCssValue("color");
+            assertEquals(expectedColor, actualColor);
+        }
 
-        driver.findElement(logo).click();
-        //System.out.println("Expe " + expected);
-        //new WebDriverWait(driver, 10).until(ExpectedConditions.not(ExpectedConditions.presenceOfElementLocated(iPhone)));
-        //new WebDriverWait(driver, 10).until(ExpectedConditions.stalenessOf(driver.findElement(iPhone)));
+//        homePage.open();
+//        homePage.search("iPhone");
+//        homePage.clickContacts();
+//        contactPage.clickQA();
+//        List<WebElement> webLinks = faqPage.getQuestions();
+//        for (WebElement element: webLinks) {
+//            String expectedColor = "rgba(62, 119, 170, 1)";
+//            String actualColor = element.getCssValue("color");
+//            assertEquals(expectedColor, actualColor);
+//        }
     }
 
     @AfterMethod

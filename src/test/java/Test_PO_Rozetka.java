@@ -1,14 +1,11 @@
-package test.java.lesson9;
+package test.java;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import test.java.lesson9.po.ContactPage;
-import test.java.lesson9.po.FaqPage;
-import test.java.lesson9.po.HomePage;
+import test.java.po.ContactPage;
+import test.java.po.FaqPage;
+import test.java.po.HomePage;
 
 import java.util.List;
 
@@ -29,15 +26,16 @@ public class Test_PO_Rozetka extends TestBaseSetup {
     @Test
     public void testA() {
         homePage.open();
-        homePage.search("iPhone");
-        homePage.clickContacts();
+        homePage.search("iPhone")
+                .search("meizu");
+        /*homePage.clickContacts();
         contactPage.clickFaq();
         List<WebElement> webLinks = faqPage.getQuestions();
         for (WebElement element: webLinks) {
             String expectedColor = "rgba(62, 119, 170, 1)";
             String actualColor = element.getCssValue("color");
             assertEquals(expectedColor, actualColor);
-        }
+        }*/
     }
 
     @Test

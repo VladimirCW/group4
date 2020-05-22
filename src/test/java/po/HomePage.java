@@ -15,7 +15,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class HomePage extends BasePage{
+public class HomePage {
+    public Logger logger = LogManager.getLogger(HomePage.class);
     private final WebDriver driver;
     private final WebDriverWait wait;
     private String searchStr;
@@ -42,6 +43,8 @@ public class HomePage extends BasePage{
 
     public HomePage open() {
         logger.info("Open");
+        logger.error("Open");
+        logger.warn("Open");
         driver.get("https://rozetka.com.ua/");
         logger.debug("URL: " + driver.getCurrentUrl());
         return this;

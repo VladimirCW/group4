@@ -1,5 +1,7 @@
 package test.java.po;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,7 +10,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class FaqPage extends BasePage{
+public class FaqPage {
+    public Logger logger = LogManager.getLogger(FaqPage.class);
     private final WebDriver driver;
     private final WebDriverWait wait;
     private final By qaLinks = By.cssSelector("[name='slider-block-active']");

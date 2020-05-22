@@ -27,15 +27,22 @@ public class Test_PO_Rozetka extends TestBaseSetup {
     public void testA() {
         homePage.open();
         homePage.search("iPhone")
-                .search("meizu");
-        /*homePage.clickContacts();
+                .search("meizu")
+                .search("xiaomi");
+        homePage.clickContacts();
+        contactPage.clickFaq();
+        homePage.open();
+        homePage.search("iPhone")
+                .search("meizu")
+                .search("xiaomi");
+        homePage.clickContacts();
         contactPage.clickFaq();
         List<WebElement> webLinks = faqPage.getQuestions();
         for (WebElement element: webLinks) {
             String expectedColor = "rgba(62, 119, 170, 1)";
             String actualColor = element.getCssValue("color");
             assertEquals(expectedColor, actualColor);
-        }*/
+        }
     }
 
     @Test

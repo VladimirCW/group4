@@ -1,5 +1,7 @@
 package test.java.po;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class HomePage {
+public class HomePage extends BasePage{
     private final WebDriver driver;
     private final WebDriverWait wait;
     private String searchStr;
@@ -31,6 +33,7 @@ public class HomePage {
 
 
     public HomePage(WebDriver driver) {
+        logger.trace("Home page initialized");
         this.driver = driver;
         wait = new WebDriverWait(this.driver, 10);
         PageFactory.initElements(driver, this);
@@ -38,11 +41,14 @@ public class HomePage {
 
 
     public HomePage open() {
+        logger.info("Open");
         driver.get("https://rozetka.com.ua/");
+        logger.debug("URL: " + driver.getCurrentUrl());
         return this;
     }
 
     public HomePage search(String searchStr) {
+        logger.info("Search on home page by " + searchStr);
         this.searchStr = searchStr;
         By searchResultItem = By
                 .xpath("//span[contains(translate(text(), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '" + searchStr.toLowerCase() + "')]");
@@ -50,6 +56,7 @@ public class HomePage {
         if( popup.size() > 0 ) {
             popupClose.click();
         }
+        search.clear();
         search.sendKeys(this.searchStr);
         search.sendKeys(Keys.ENTER);
         //wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(searchResultItem)); //1
@@ -66,6 +73,7 @@ public class HomePage {
     }
 
     public HomePage clickContacts() {
+        logger.info("Click contacts");
         wait.until(ExpectedConditions.elementToBeClickable(contactBtn));
         contactBtn.click();
         return this;

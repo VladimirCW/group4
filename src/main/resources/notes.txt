@@ -5,3 +5,13 @@ mvn clean -Dtest=FirstTest#success* test
 
 #new_head > div.b-new-index-icons.container > div > div:nth-child(2) > a > h3 > span
 [class='item_napr'] h3 span
+
+java -jar .\selenium-server-standalone-3.141.59.jar -role hub
+java -jar .\selenium-server-standalone-3.141.59.jar -role node -nodeConfig .\nodeConfig.json
+sudo apt update
+sudo apt install docker
+sudo apt install docker.io -y
+sudo apt install docker-compose -y
+touch seleniumGrid.yml
+sudo nano seleniumGrid.yml
+cat seleniumGrid.yml

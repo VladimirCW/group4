@@ -5,6 +5,9 @@ import org.testng.annotations.Test;
 import test.java.po.ContactPage;
 import test.java.po.FaqPage;
 import test.java.po.HomePage;
+import test.java.utils.RetryAnalyzer;
+
+import static org.testng.Assert.fail;
 
 public class TestFirst extends TestBaseSetup {
     HomePage homePage;
@@ -14,13 +17,14 @@ public class TestFirst extends TestBaseSetup {
         homePage = new HomePage(driver);
     }
 
-    @Test
-    public void testA() {
-        homePage.open();
-    }
+//    @Test
+//    public void testA() {
+//        homePage.open();
+//    }
 
-    /*@Test
+    @Test
     public void testB() {
         homePage.open();
-    }*/
+        fail();
+    }
 }

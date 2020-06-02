@@ -1,5 +1,6 @@
 package test.java;
 
+import io.qameta.allure.*;
 import org.openqa.selenium.By;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,6 +12,8 @@ import test.java.utils.RetryAnalyzer;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
+@TmsLink("TMS-123")
+@Epic("Card")
 public class TestFirst extends TestBaseSetup {
     HomePage homePage;
     ContactPage contactPage;
@@ -23,7 +26,9 @@ public class TestFirst extends TestBaseSetup {
         faqPage = new FaqPage(driver);
     }
 
-
+    @Feature("Add to the card")
+    @Story("Positive test 1")
+    @Issue("AAA-456")
     @Test
     public void testB() {
         homePage.open().clickContacts();
@@ -31,13 +36,19 @@ public class TestFirst extends TestBaseSetup {
         faqPage.getQuestions();
     }
 
+    @Link("https://google.com")
+    @Feature("Add to the card")
+    @Story("Positive test 2")
+    @Issues({
+            @Issue("AAA-7"),
+            @Issue("AAA-8")
+    })
     @Test
     public void testC() {
-        homePage.open().clickContacts();
-        contactPage.clickFaq();
-        faqPage.getQuestions();
+        homePage.open2("https://google.com");
     }
 
+    @Feature("Remove from the card")
     @Test
     public void testD() {
         homePage.open().clickContacts();
@@ -46,6 +57,8 @@ public class TestFirst extends TestBaseSetup {
         assertTrue(false);
     }
 
+    @Feature("Remove from the card")
+    @Story("Positive test 3")
     @Test
     public void testE() {
         homePage.open().clickContacts();
@@ -55,10 +68,12 @@ public class TestFirst extends TestBaseSetup {
         assertTrue(true);
     }
 
+    @Feature("Switch product")
+    @Story("Positive test 4")
     @Test
     public void testF() {
         homePage.open().clickContacts();
-        if(true) throw new Error("Error");
+        if(true) throw new Error("Custom error");
         contactPage.clickFaq();
         faqPage.getQuestions();
         assertTrue(true);

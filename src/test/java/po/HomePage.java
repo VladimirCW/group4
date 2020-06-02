@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import test.java.utils.PropertyLoader;
+import io.qameta.allure.Step;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
-
+    @Step("Open home page")
     public HomePage open() {
         logger.info("Open");
         logger.error("Open");
@@ -53,6 +54,19 @@ public class HomePage {
         return this;
     }
 
+    @Step("Open home page by url {url}")
+    public HomePage open2(String url) {
+        logger.info("Open");
+        logger.error("Open");
+        logger.warn("Open");
+        driver.get(url);
+        //el.sendKeys(PropertyLoader.loadProperty("login"));
+        //el2.sendKeys(PropertyLoader.loadProperty("password"));
+        logger.debug("URL: " + driver.getCurrentUrl());
+        return this;
+    }
+
+    @Step("Search by {searchStr}")
     public HomePage search(String searchStr) {
         logger.info("Search on home page by " + searchStr);
         this.searchStr = searchStr;
@@ -78,6 +92,7 @@ public class HomePage {
         return this;
     }
 
+    @Step("Click contacts")
     public HomePage clickContacts() {
         logger.info("Click contacts");
         wait.until(ExpectedConditions.elementToBeClickable(contactBtn));

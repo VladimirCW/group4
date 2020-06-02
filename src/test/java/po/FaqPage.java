@@ -1,5 +1,6 @@
 package test.java.po;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -22,6 +23,7 @@ public class FaqPage {
         wait = new WebDriverWait(this.driver, 10);
     }
 
+    @Step("Get questions")
     public List<WebElement> getQuestions() {
         logger.info("Get questions");
         wait.until(ExpectedConditions.visibilityOfElementLocated(qaLinks));

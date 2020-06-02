@@ -54,4 +54,13 @@ public class TestFirst extends TestBaseSetup {
         faqPage.getQuestions();
         assertTrue(true);
     }
+
+    @Test
+    public void testF() {
+        homePage.open().clickContacts();
+        if(true) throw new Error("Error");
+        contactPage.clickFaq();
+        faqPage.getQuestions();
+        assertTrue(true);
+    }
 }

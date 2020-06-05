@@ -8,6 +8,7 @@
             <class name="test.java.TestFirst">
                 <methods>
                     <include name="testB"/>
+                    <include name="testD"/>
                 </methods>
             </class>
         </classes>

@@ -18,5 +18,10 @@ pipeline {
                 bat 'mvn clean -DsuiteXmlFile=ui.xml test'
             }
         }
+        stage("Deploy") {
+            steps {
+                echo 'Deployed'
+            }
+        }
     }
 }

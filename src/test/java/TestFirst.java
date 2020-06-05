@@ -30,7 +30,8 @@ public class TestFirst extends TestBaseSetup {
     @Story("Positive test 1")
     @Issue("AAA-456")
     @Test
-    public void testB() {
+    public void testB(String userName, int userAge) {
+        System.out.println(String.format("User name'%s' and age is '%d'", userName, userAge));
         homePage.open().clickContacts();
         contactPage.clickFaq();
         faqPage.getQuestions();

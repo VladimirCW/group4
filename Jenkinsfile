@@ -2,19 +2,20 @@ pipeline {
     agent any
 
     stages {
-        stage("First") {
+        stage("Preparation") {
             steps {
-                echo 'Hello'
+                echo 'Download updates'
+                git 'https://github.com/VladimirCW/group4.git'
             }
         }
-        stage("Second") {
+        stage("Unit tests") {
             steps {
-                echo 'Hello'
+                bat 'mvn clean -DsuiteXmlFile=unit-testng.xml test'
             }
         }
-        stage("Third") {
+        stage("UI tests") {
             steps {
-                echo 'Hello'
+                bat 'mvn clean -DsuiteXmlFile=ui.xml test'
             }
         }
     }
